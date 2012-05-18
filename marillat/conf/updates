@@ -1,0 +1,13 @@
+Name: marillat
+Method: http://www.debian-multimedia.org
+#Suite: lenny
+Architectures: i386 amd64 source
+Components: main
+VerifyRelease: 1F41B907
+
+Name: marillat-sid
+Method: http://www.debian-multimedia.org
+Suite: sid
+Architectures: i386 amd64 source
+Components: main
+VerifyRelease: 1F41B907

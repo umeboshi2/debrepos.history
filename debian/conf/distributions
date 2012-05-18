@@ -1,0 +1,49 @@
+Origin: Debian
+Label: Debian
+Suite: stable
+Codename: lenny
+Version: 5.0
+Architectures: i386 amd64 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Debian 5.0 Released 14 February 2009
+Log: logfile
+Update: - lenny lenny-di
+SignWith: 686310CF
+
+Origin: volatile.debian.org
+Label: debian-volatile
+Suite: stable/volatile
+Codename: lenny/volatile
+Version: 5.0
+FakeComponentPrefix: volatile
+Architectures: i386 amd64 source
+Components: main contrib non-free
+#UDebComponents: main non-free
+Description: volatile.debian.org
+Log: logfile
+#Update: - lenny-volatile
+SignWith: 686310CF
+
+Origin: Debian
+Label: Debian
+Suite: testing
+Codename: squeeze
+Architectures: source amd64 i386
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Debian x.y Testing distribution - Not Released
+Log: logfile
+Update: - squeeze squeeze-di
+SignWith: 686310CF
+
+Origin: Debian
+Label: Debian
+Suite: unstable
+Codename: sid
+Architectures: source amd64 i386
+Components: main contrib non-free
+Description: Debian x.y Unstable - Not Released
+Log: logfile
+Update: - sid
+SignWith: 686310CF

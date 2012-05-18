@@ -1,0 +1,41 @@
+Origin: Ubuntu
+Label: Ubuntu
+Suite: jaunty
+Codename: jaunty
+Version: 9,04
+Architectures: i386 amd64 source
+Components: main restricted universe multiverse
+UDebComponents: main restricted universe
+Description: Ubuntu Jaunty 9.04
+Log: logfile
+Update: - jaunty jaunty-di
+SignWith: 686310CF
+
+Origin: Ubuntu
+Label: Ubuntu
+Suite: jaunty-security
+Codename: jaunty-security
+Version: 9.04
+#FakeComponentPrefix: updates
+Architectures: i386 amd64 source
+Components: main restricted universe multiverse
+#UDebComponents: main non-free
+Description: Ubuntu Jaunty Security
+Log: logfile
+#Update: - jaunty-security
+SignWith: 686310CF
+
+Origin: Ubuntu
+Label: Ubuntu
+Suite: jaunty-updates
+Codename: jaunty-updates
+Version: 9.04
+#FakeComponentPrefix: updates
+Architectures: i386 amd64 source
+Components: main restricted universe multiverse
+#UDebComponents: main non-free
+Description: Ubuntu Jaunty Updates
+Log: logfile
+Update: - jaunty-updates
+SignWith: 686310CF
+

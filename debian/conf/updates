@@ -1,0 +1,58 @@
+# Main Mirror
+# Method: http://debian.mirrors.tds.net/debian
+
+Name: security
+Method: http://security.debian.org/
+VerifyRelease: 55BE302B|473041FA
+Architectures: i386 amd64 source
+Components: main contrib non-free
+
+Name: lenny
+#Method: http://debian.mirrors.tds.net/debian
+Method: http://ftp.uk.debian.org/debian
+Fallback: http://ftp.us.debian.org/debian
+VerifyRelease: 55BE302B|473041FA
+Architectures: i386 amd64 source
+Components: main contrib non-free
+#ListHook: testgerm
+
+Name: lenny-di
+#Method: http://debian.mirrors.tds.net/debian
+Method: http://ftp.uk.debian.org/debian
+Fallback: http://ftp.us.debian.org/debian
+VerifyRelease: 55BE302B|473041FA
+Architectures: i386 amd64 source
+UDebComponents: main non-free
+
+Name: lenny-volatile
+Method: http://volatile.debian.org/debian-volatile
+VerifyRelease: 55BE302B|473041FA
+Architectures: i386 amd64 source
+Components: main contrib non-free
+
+Name: squeeze
+#Method: http://debian.mirrors.tds.net/debian
+Method: http://ftp.uk.debian.org/debian
+#Method: http://ftp.us.debian.org/debian 
+Fallback: http://ftp.us.debian.org/debian
+VerifyRelease: 55BE302B|473041FA
+Architectures: amd64 source i386
+Components: main contrib non-free
+
+Name: squeeze-di
+Method: http://debian.mirrors.tds.net/debian
+#Method: http://ftp.uk.debian.org/debian
+#Method: http://ftp.us.debian.org/debian 
+Fallback: http://ftp.us.debian.org/debian
+VerifyRelease: 55BE302B|473041FA
+Architectures: amd64 source i386
+UDebComponents: main non-free
+
+Name: sid
+#Method: http://debian.mirrors.tds.net/debian
+Method: http://ftp.uk.debian.org/debian
+#Method: http://ftp.us.debian.org/debian 
+Fallback: http://ftp.us.debian.org/debian
+VerifyRelease: 55BE302B|473041FA
+Architectures: amd64 source i386
+Components: main contrib non-free

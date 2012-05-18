@@ -1,0 +1,72 @@
+Origin: Paella
+Label: Paella
+Suite: paella
+Version: 4.0
+Codename: paella
+Architectures: amd64 i386 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Paella local repository
+Log: logfile
+SignWith: 686310CF
+
+Origin: Paella
+Label: Paella
+Suite: experimental
+Version: 4.0
+Codename: experimental
+Architectures: amd64 i386 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Paella local repository for experimental packages
+Log: logfile
+SignWith: 686310CF
+
+Origin: Paella
+Label: Paella
+Suite: lenny
+Version: 4.0
+Codename: lenny
+Architectures: amd64 i386 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Paella local repository for lenny
+Log: logfile
+SignWith: 686310CF
+
+Origin: Paella
+Label: Paella
+Suite: lenny-backports
+Version: 4.0
+Codename: lenny-backports
+Architectures: amd64 i386 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Paella local repository for lenny backported packages 
+Log: logfile
+SignWith: 686310CF
+
+Origin: Paella
+Label: Paella
+Suite: squeeze
+Version: 5.0
+Codename: squeeze
+Architectures: amd64 i386 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Paella local repository for squeeze
+Log: logfile
+SignWith: 686310CF
+
+Origin: Paella
+Label: Paella
+Suite: squeeze-backports
+Version: 5.0
+Codename: squeeze-backports
+Architectures: amd64 i386 source
+Components: main contrib non-free
+UDebComponents: main non-free
+Description: Paella local repository for squeeze backported packages 
+Log: logfile
+SignWith: 686310CF
+

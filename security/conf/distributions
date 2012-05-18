@@ -1,0 +1,27 @@
+Origin: Debian
+Label: Debian-Security
+Suite: stable/updates
+Codename: lenny/updates
+Version: 5.0
+FakeComponentPrefix: updates
+Architectures: i386 amd64 source
+Components: main contrib non-free
+#UDebComponents: main non-free
+Description: Debian 5.0 Security Updates
+Log: logfile
+Update: - security
+SignWith: 686310CF
+
+Origin: Debian
+Label: Debian-Security
+Suite: testing
+Codename: squeeze/updates
+Version: None
+FakeComponentPrefix: updates
+Architectures: i386 amd64 source
+Components: main contrib non-free
+#UDebComponents: main non-free
+Description: Debian testing Security Updates
+Log: logfile
+Update: - security
+SignWith: 686310CF

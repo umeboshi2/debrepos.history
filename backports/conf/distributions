@@ -1,0 +1,26 @@
+Origin: Backports.org archive
+Label: Backports.org archive
+Suite: lenny-backports
+Version: None
+Codename: lenny-backports
+NotAutomatic: yes
+Architectures: source
+Components: main contrib non-free
+Description: Backports for the Lenny Distribution
+Log: logfile
+#Update: - backports
+SignWith: 686310CF
+
+Origin: Backports.org archive
+Label: Backports.org archive
+Suite: squeeze-backports
+Version: None
+Codename: squeeze-backports
+NotAutomatic: yes
+Architectures: source
+Components: main contrib non-free
+Description: Backports for the Lenny Distribution
+Log: logfile
+Update: - backports
+SignWith: 686310CF
+

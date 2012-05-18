@@ -1,0 +1,5 @@
+Name: backports
+Method:  http://backports.debian.org/debian-backports
+VerifyRelease: 16BA136C|55BE302B|473041FA
+Architectures: source
+Components: main contrib non-free

@@ -1,0 +1,95 @@
+#!/usr/bin/python -i
+import os, sys
+# gzip module isn't working with reprepro gzipped list files
+import gzip
+import tempfile
+import subprocess
+import logging
+
+import apt_pkg
+
+sys.path.append('/usr/lib/germinate')
+
+from Germinate import Germinator
+# this import isn't doing any good
+from Germinate.Archive import TagFile
+
+# This works for me, but I don't have _ in any dist, category,
+# or rule names
+def parse_list_filename(filename):
+    dist, rule, pkgtype, category, arch = filename.split('_')
+    return dist, rule, pkgtype, category, arch
+
+simple_seed = """kde
+openoffice.org
+iceweasel
+"""
+
+logger = logging.getLogger()
+# catch all messages
+logger.setLevel(0)
+handler = logging.StreamHandler(sys.stdout)
+handler.setFormatter(logging.Formatter('%(levelname)s%(message)s'))
+logger.addHandler(handler)
+
+g = Germinator()
+
+filename = sys.argv[1]
+# we need the second argument, as
+# reprepro will assume that this script
+# modifies the file, and will read from the
+# second file name
+new_filename = sys.argv[2]
+
+dist, rule, pkgtype, category, arch = parse_list_filename(filename)
+
+print "arch is", arch
+
+apt_pkg.InitConfig()
+apt_pkg.Config.Set("APT::Architecture", arch)
+apt_pkg.InitSystem()
+
+print "filename is", filename
+print "new filename is", new_filename
+
+proc = subprocess.Popen(['gzip', '-cd', filename], stdout=subprocess.PIPE)
+tf = tempfile.TemporaryFile()
+block = proc.stdout.read(1024)
+while block:
+    tf.write(block)
+    block = proc.stdout.read(1024)
+retval = proc.wait()
+if retval:
+    raise RuntimeError , "problem reading %s" % filename
+# move to the beginning of the file
+tf.seek(0)
+
+if arch == 'source':
+    g.parseSources([tf])
+else:
+    # pkgtype should be either deb or udeb
+    print "pkgtype is", pkgtype
+    g.parsePackages([tf], pkgtype)
+    # now the hard part
+    # we have to insert the seeds
+    # then create filter lists to add to the
+    # reprepro config.
+    # QUESTIONS: Has reprepro already parsed
+    # the filter lists?  Has it just read the file names
+    # allowing us to use this hook to fill those files?
+    # if we add a new list, do we have to raise an error
+    # and run reprepro again?
+    seed_lines = simple_seed.split('\n')
+    seed_lines = [line for line in seed_lines if line]
+    new_seed_lines = [' * %s\n' % line for line in seed_lines]
+    seed = ''.join(new_seed_lines)
+    g.plantSeed(seed, arch, 'simple', '')
+    
+    
+
+    
+# we don't change the list, so we make a
+# a quick hardlink
+if os.path.isfile(new_filename):
+    os.remove(new_filename)
+os.link(filename, new_filename)

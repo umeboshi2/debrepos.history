@@ -1,0 +1,26 @@
+Name: jaunty
+Method: http://ubuntu.mirrors.tds.net/ubuntu
+Fallback: http://de.archive.ubuntu.com/ubuntu
+VerifyRelease: 437D05B5
+Architectures: i386 amd64 source
+Components: main restricted universe multiverse
+
+Name: jaunty-di
+Method: http://ubuntu.mirrors.tds.net/ubuntu
+Fallback: http://de.archive.ubuntu.com/ubuntu
+VerifyRelease: 437D05B5
+Architectures: i386 amd64 source
+UDebComponents: main restricted universe
+
+Name: jaunty-security
+Method: http://security.ubuntu.com/
+VerifyRelease: 437D05B5
+Architectures: i386 amd64 source
+Components: main restricted universe multiverse
+
+Name: jaunty-updates
+Method: http://ubuntu.mirrors.tds.net/ubuntu
+Fallback: http://de.archive.ubuntu.com/ubuntu
+VerifyRelease: 437D05B5
+Architectures: i386 amd64 source
+Components: main restricted universe multiverse

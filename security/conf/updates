@@ -1,0 +1,6 @@
+Name: security
+Method: http://security.debian.org/
+VerifyRelease: 55BE302B|473041FA
+Architectures: i386 amd64 source
+Components: main contrib non-free
+#ListHook: testgerm
