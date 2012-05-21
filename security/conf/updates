@@ -4,3 +4,4 @@ VerifyRelease: 55BE302B|473041FA
 Architectures: i386 amd64 source
 Components: main contrib non-free
 #ListHook: testgerm
+FilterList: deinstall pkgs/pegatron pkgs/cypress pkgs/tkdev pkgs/builder

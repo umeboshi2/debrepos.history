@@ -11,16 +11,3 @@ Log: logfile
 Update: squeeze
 SignWith: C4B08740
 
-Origin: Paella
-Label: Paella
-Suite: paella
-Version: 4.0
-Codename: paella
-Architectures: i386 amd64 source
-Components: main contrib non-free
-Description: Paella local repository
-Log: logfile
-SignWith: C4B08740
-
-
-
