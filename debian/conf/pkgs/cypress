@@ -81,6 +81,7 @@ dlocate						install
 dmidecode					install
 dmsetup						install
 dnsutils					install
+doc-base					install
 doc-debian					install
 doc-linux-text					install
 dosfstools					install
@@ -89,6 +90,7 @@ dpkg-dev					install
 dpkg-dev-el					install
 dput						install
 dselect						install
+dwww						install
 e2fslibs					install
 e2fsprogs					install
 eject						install
@@ -151,6 +153,7 @@ hunspell-en-us					install
 iceweasel					install
 ifupdown					install
 info						install
+info2www					install
 initramfs-tools					install
 initscripts					install
 insserv						install
@@ -277,12 +280,14 @@ libfaad2					install
 libfcgi-perl					install
 libfile-copy-recursive-perl			install
 libfile-libmagic-perl				install
+libfile-ncopy-perl				install
 libflac8					install
 libfont-afm-perl				install
 libfont-freetype-perl				install
 libfontconfig1					install
 libfontenc1					install
 libfreetype6					install
+libfreezethaw-perl				install
 libfribidi0					install
 libgamin0					install
 libgc1c2					install
@@ -394,6 +399,7 @@ libmail-sendmail-perl				install
 libmailtools-perl				install
 libmime-tools-perl				install
 libmime-types-perl				install
+libmldbm-perl					install
 libmng1						install
 libmodplug1					install
 libmozjs2d					install
@@ -804,6 +810,7 @@ subversion-tools				install
 sudo						install
 sux						install
 svn-buildpackage				install
+swish++						install
 syslinux-common					install
 sysv-rc						install
 sysvinit					install

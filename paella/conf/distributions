@@ -8,7 +8,7 @@ Components: main contrib non-free
 UDebComponents: main non-free
 Description: Paella local repository
 Log: logfile
-SignWith: 686310CF
+SignWith: C4B08740
 
 Origin: Paella
 Label: Paella
@@ -20,7 +20,7 @@ Components: main contrib non-free
 UDebComponents: main non-free
 Description: Paella local repository for experimental packages
 Log: logfile
-SignWith: 686310CF
+SignWith: C4B08740
 
 Origin: Paella
 Label: Paella
@@ -32,7 +32,7 @@ Components: main contrib non-free
 UDebComponents: main non-free
 Description: Paella local repository for lenny
 Log: logfile
-SignWith: 686310CF
+SignWith: C4B08740
 
 Origin: Paella
 Label: Paella
@@ -44,7 +44,7 @@ Components: main contrib non-free
 UDebComponents: main non-free
 Description: Paella local repository for lenny backported packages 
 Log: logfile
-SignWith: 686310CF
+SignWith: C4B08740
 
 Origin: Paella
 Label: Paella
@@ -56,7 +56,7 @@ Components: main contrib non-free
 UDebComponents: main non-free
 Description: Paella local repository for squeeze
 Log: logfile
-SignWith: 686310CF
+SignWith: C4B08740
 
 Origin: Paella
 Label: Paella
@@ -68,5 +68,7 @@ Components: main contrib non-free
 UDebComponents: main non-free
 Description: Paella local repository for squeeze backported packages 
 Log: logfile
-SignWith: 686310CF
+SignWith: C4B08740
+
+
 
