@@ -1,18 +1,6 @@
 Origin: Unofficial Multimedia Packages
 Label: Unofficial Multimedia Packages
 Suite: stable
-Codename: lenny
-Version: None
-Description: This repository is mostly non-free
-Architectures: i386 amd64 source
-Components: main non-free
-Log: logfile
-Update: - marillat
-SignWith: 686310CF
-
-Origin: Unofficial Multimedia Packages
-Label: Unofficial Multimedia Packages
-Suite: testing
 Codename: squeeze
 Version: None
 Description: This repository is mostly non-free
@@ -20,16 +8,17 @@ Architectures: i386 amd64 source
 Components: main non-free
 Log: logfile
 Update: - marillat
-SignWith: 686310CF
+SignWith: C4B08740
 
 Origin: Unofficial Multimedia Packages
 Label: Unofficial Multimedia Packages
-Suite: unstable
-Codename: sid
+Suite: testing
+Codename: wheezy
 Version: None
 Description: This repository is mostly non-free
 Architectures: i386 amd64 source
 Components: main non-free
 Log: logfile
 Update: - marillat
-SignWith: 686310CF
+SignWith: C4B08740
+
