@@ -34,7 +34,12 @@ def file_to_dictionary(filename):
         line = line.strip()
         package, action = [i.strip() for i in line.split()]
         #print '%s: %s' % (package, action)
-        if package in data:
+        multiarch_stripped = False
+        if ':' in package:
+            print "multiarch detected: %s" % package
+            package = package.split(':')[0]
+            multiarch_stripped = True
+        if package in data and not multiarch_stripped:
             msg = 'Package %s already present...' % package
             raise RuntimeError, msg
         else:
