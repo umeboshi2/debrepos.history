@@ -53,6 +53,7 @@ at-spi						install
 atari800					install
 atop						install
 attr						install
+auto-apt-archive				install
 autopoint					install
 autotools-dev					install
 avahi-autoipd					install
@@ -99,6 +100,7 @@ bsh-gcj						install
 btrfs-tools					install
 build-essential					install
 busybox						install
+busybox-initramfs				install
 bzip2						install
 ca-certificates					install
 ca-certificates-java				install
@@ -106,6 +108,7 @@ cabextract					install
 cantor						install
 cantor-backend-kalgebra				install
 capplets-data					install
+casper						install
 cbios						install
 cclive						install
 cdbs						install
@@ -127,6 +130,7 @@ colord						install
 comix						install
 comixcursors					install
 common-lisp-controller				install
+confconsole					install
 console-setup					install
 console-setup-linux				install
 console-terminus				install
@@ -144,6 +148,7 @@ cpp-4.6						install
 cpufrequtils					install
 crda						install
 cron						install
+cron-apt					install
 cups						install
 cups-bsd					install
 cups-client					install
@@ -191,7 +196,16 @@ devscripts					install
 devscripts-el					install
 dh-make						install
 dhcp3-server					install
+di-live						install
+dia						install
+dia-common					install
+dia-gnome					install
+dia-libs					install
+dia-shapes					install
+dia2code					install
+dialog						install
 dictionaries-common				install
+diff						install
 diffstat					install
 diffutils					install
 dirmngr						install
@@ -258,6 +272,7 @@ equivs						install
 esound-common					install
 espeak						install
 espeak-data					install
+etckeeper					install
 ethtool						install
 evince						install
 evince-common					install
@@ -289,8 +304,9 @@ fillets-ng					install
 fillets-ng-data					install
 findutils					install
 firmware-linux-free				install
+firmware-linux-nonfree				install
 fizmo						install
-flashplugin-nonfree				deinstall
+flashplugin-nonfree				install
 flim						install
 fluid-soundfont-gm				install
 fluid-soundfont-gs				install
@@ -434,6 +450,7 @@ gir1.2-totem-plparser-1.0			install
 gir1.2-upowerglib-1.0				install
 gir1.2-xkl-1.0					install
 git						install
+git-core					install
 git-doc						install
 git-el						install
 git-gui						install
@@ -559,6 +576,7 @@ grub2-common					install
 gs-cjk-resource					install
 gsettings-desktop-schemas			install
 gsfonts						install
+gsfonts-x11					install
 gstreamer0.10-alsa				install
 gstreamer0.10-ffmpeg				install
 gstreamer0.10-ffmpeg:i386			install
@@ -614,6 +632,7 @@ hplip-gui					install
 htdig						install
 html2text					install
 htop						install
+hubdns						install
 hunspell-en-us					install
 hwdata						install
 hyphen-en-us					install
@@ -629,6 +648,7 @@ imagemagick					install
 imagemagick-common				install
 info						install
 info2www					install
+inithooks					install
 initramfs-tools					install
 initscripts					install
 inkscape					install
@@ -678,7 +698,7 @@ kate-data					install
 katepart					install
 katomic						install
 kbattleship					install
-kbd						deinstall
+kbd						install
 kblackbox					install
 kblocks						install
 kbounce						install
@@ -962,6 +982,7 @@ libaudio2					install
 libaudio2:i386					install
 libaudiofile0					install
 libaudit0					install
+libauthen-pam-perl				install
 libauthen-sasl-perl				install
 libavahi-client3				install
 libavahi-client3:i386				install
@@ -1190,6 +1211,7 @@ libdc1394-22					install
 libdc1394-22:i386				install
 libdca0						install
 libdconf0:i386					install
+libdebconfclient0				install
 libdebian-installer-extra4			install
 libdebian-installer4				install
 libdevel-symdump-perl				install
@@ -2052,6 +2074,7 @@ libpam-runtime					install
 libpam-smbpass					install
 libpam-winbind:i386				install
 libpam0g					install
+libpam0g-dev					install
 libpam0g:i386					install
 libpanel-applet-4-0				install
 libpanel-applet2-0				install
@@ -2274,6 +2297,7 @@ librsvg2-2					install
 librsvg2-2:i386					install
 librsvg2-common					install
 librsvg2-common:i386				install
+librsync1					install
 librtmp0:i386					install
 libruby						install
 libruby1.8					install
@@ -2406,6 +2430,7 @@ libssh-4					install
 libssh-4:i386					install
 libssh2-1					install
 libssh2-1:i386					install
+libssl-dev					install
 libssl0.9.8					install
 libssl1.0.0:i386				install
 libstartup-notification0			install
@@ -2678,10 +2703,13 @@ libxkbfile1:i386				install
 libxklavier16					install
 libxml-commons-external-java			install
 libxml-commons-resolver1.1-java			install
+libxml-dom-perl					install
 libxml-libxml-perl				install
 libxml-namespacesupport-perl			install
 libxml-parser-perl				install
 libxml-parser-ruby1.8				install
+libxml-perl					install
+libxml-regexp-perl				install
 libxml-rss-libxml-perl				install
 libxml-sax-base-perl				install
 libxml-sax-expat-perl				install
@@ -2757,10 +2785,12 @@ linux-headers-686-pae				install
 linux-headers-amd64				install
 linux-image-2.6-686				install
 linux-image-2.6-amd64				install
+linux-image-2.6.32-5-486			install
 linux-image-2.6.32-5-686			install
 linux-image-2.6.32-5-amd64			install
-linux-image-3.2.0-2-486				deinstall
+linux-image-3.2.0-2-486				install
 linux-image-3.2.0-2-686-pae			install
+linux-image-486					install
 linux-image-686					install
 linux-image-686-pae				install
 linux-kbuild-2.6.32				install
@@ -2773,6 +2803,7 @@ live-build					install
 live-helper					install
 lm-sensors					install
 lmodern						install
+localepurge					install
 locales						install
 lockfile-progs					install
 logcheck					install
@@ -2822,6 +2853,7 @@ mime-construct					install
 mime-support					install
 min12xxw					install
 minicom						install
+mktemp						install
 mlocate						install
 mlock						install
 mmm-mode					install
@@ -2881,6 +2913,7 @@ nslcd						install
 ntfs-3g						install
 ntfsprogs					install
 ntp						install
+ntpdate						install
 ntrack-module-libnl-0				install
 nuvola-icon-theme				install
 nvclock						install
@@ -2897,6 +2930,8 @@ okular						install
 okular-extra-backends				install
 oolite						install
 oolite-data					install
+open-vm-modules-2.6.32-5-686			install
+open-vm-tools					install
 openbsd-inetd					install
 openclipart-openoffice.org			install
 openclipart-png					install
@@ -3078,6 +3113,7 @@ pulseaudio-module-x11				install
 pulseaudio-utils				install
 purifyeps					install
 pychecker					install
+pycurl-wrapper					install
 pyjamas						install
 pyjamas-canvas					install
 pyjamas-desktop					install
@@ -3128,6 +3164,7 @@ python-dbus-dev					install
 python-debian					install
 python-debianbts				install
 python-decorator				install
+python-dialog					install
 python-distribute-doc				install
 python-dns					install
 python-doc					install
@@ -3365,6 +3402,7 @@ remmina-plugin-vnc				install
 remmina-plugin-xdmcp				install
 reportbug					install
 reprepro					install
+resolvconf					install
 rhythmbox					install
 rhythmbox-plugin-cdrecorder			install
 rhythmbox-plugins				install
@@ -3406,6 +3444,7 @@ sgml-data					install
 shared-desktop-ontologies			install
 shared-mime-info				install
 sharutils					install
+shellinabox					install
 shorewall					install
 shotwell					install
 simple-scan					install
@@ -3445,6 +3484,7 @@ squid-common					install
 squid-langpack					install
 squidclient					install
 squidguard					install
+ssh						install
 ssl-cert					install
 stella						install
 step						install
@@ -3459,6 +3499,7 @@ swat						install
 sweeper						install
 swish++						install
 synaptic					install
+syslinux					install
 syslinux-common					install
 syslinux-themes-debian-squeeze			install
 system-config-printer				install
@@ -3495,6 +3536,7 @@ tcpslice					install
 tcptraceroute					install
 tcputils					install
 tdb-tools					install
+tedia2sql					install
 telepathy-gabble				install
 telepathy-logger				install
 telepathy-mission-control-5			install
@@ -3538,6 +3580,9 @@ tipa						install
 tk						install
 tk8.4						install
 tk8.5						install
+tklbam						install
+tklbam-duplicity				install
+tklbam-python-boto				install
 tomboy						install
 tora						install
 totem						install
@@ -3576,11 +3621,16 @@ ttf-sjfonts					install
 ttf-wqy-zenhei					install
 tumbler						install
 tumbler-common					install
+turnkey-core-12.0				install
+turnkey-pylib					install
+turnkey-sysinfo					install
+turnkey-version					install
 twm						install
 tzdata						install
 tzdata-java					install
 ucf						install
 udev						install
+udhcpc						install
 udisks						install
 ufraw-batch					install
 umbrello					install
@@ -3629,7 +3679,7 @@ virtualbox-ose					install
 virtualbox-ose-guest-dkms			install
 virtualbox-ose-guest-utils			install
 virtualbox-ose-guest-x11			install
-virtualbox-ose-qt				deinstall
+virtualbox-ose-qt				install
 virtualbox-qt					install
 virtuoso-minimal				install
 virtuoso-opensource-6.1-bin			install
@@ -3644,6 +3694,25 @@ vpnc						install
 w3m						install
 wamerican					install
 wdiff						install
+webmin						install
+webmin-custom					install
+webmin-fdisk					install
+webmin-file					install
+webmin-firewall					install
+webmin-lvm					install
+webmin-mount					install
+webmin-net					install
+webmin-passwd					install
+webmin-raid					install
+webmin-shell					install
+webmin-software					install
+webmin-sshd					install
+webmin-syslog					install
+webmin-text-editor				install
+webmin-theme-stressfree				install
+webmin-tklbam					install
+webmin-updown					install
+webmin-useradmin				install
 wesnoth						install
 wesnoth-1.8					install
 wesnoth-1.8-aoi					install
@@ -3797,4 +3866,5 @@ zenity						install
 zenity-common					install
 zip						install
 zlib1g						install
+zlib1g-dev					install
 zlib1g:i386					install

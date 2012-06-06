@@ -5,6 +5,9 @@ parser = OptionParser()
 
 parser.add_option('-v', '--verbose', action='store_true', dest='verbose',
                   default=False)
+parser.add_option('-i', '--install', action='store_true', dest='install',
+                  default=False,
+                  help='Mark packages as "install" instead of "hold" or "deinstall"')
 parser.add_option('-d', '--dist', action='store', dest='dist',
                   default='squeeze')
 
@@ -35,6 +38,8 @@ def file_to_dictionary(filename):
             msg = 'Package %s already present...' % package
             raise RuntimeError, msg
         else:
+            if opts.install:
+                action = 'install'
             if action != 'install':
                 print "WARNING: %s set for action %s" % (package, action)
             data[package] = action

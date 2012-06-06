@@ -183,6 +183,7 @@ dc						install
 dconf-gsettings-backend:i386			install
 dconf-service					install
 dconf-tools					install
+dcraw						install
 dctrl-tools					install
 debconf						install
 debconf-i18n					install
@@ -208,6 +209,12 @@ devscripts-el					install
 dh-make						install
 dhcp3-server					install
 di-live						install
+dia						install
+dia-common					install
+dia-gnome					install
+dia-libs					install
+dia-shapes					install
+dia2code					install
 dialog						install
 dictionaries-common				install
 diff						install
@@ -315,6 +322,7 @@ fillets-ng					install
 fillets-ng-data					install
 findutils					install
 firmware-linux-free				install
+firmware-linux-nonfree				install
 fizmo						install
 flashplugin-nonfree				install
 flim						install
@@ -390,6 +398,7 @@ gconf2						install
 gconf2-common					install
 gcr						install
 gdb						install
+gdb-doc						install
 gdbserver					install
 gddrescue					install
 gdebi						install
@@ -563,6 +572,7 @@ gnuchess-book					install
 gnugo						install
 gnupg						install
 gnupg-agent					install
+gnupg-doc					install
 gnupg2						install
 gnustep-base-common				install
 gnustep-base-runtime				install
@@ -579,6 +589,7 @@ gpgv						install
 gpsd						install
 granatier					install
 graphviz					install
+graphviz-doc					install
 grep						install
 groff-base					install
 grokevt						install
@@ -591,6 +602,7 @@ grub2-common					install
 gs-cjk-resource					install
 gsettings-desktop-schemas			install
 gsfonts						install
+gsfonts-x11					install
 gstreamer0.10-alsa				install
 gstreamer0.10-ffmpeg				install
 gstreamer0.10-ffmpeg:i386			install
@@ -646,6 +658,7 @@ hplip-data					install
 hplip-doc					install
 hplip-gui					install
 htdig						install
+htdig-doc					install
 html2text					install
 htop						install
 hubdns						install
@@ -697,6 +710,7 @@ junit						install
 junit4						install
 k3b						install
 k3b-data					install
+k3b-extrathemes					install
 k3b-i18n					install
 kaboom						install
 kaccessible					install
@@ -713,6 +727,7 @@ kanjidic					install
 kapman						install
 kappfinder					install
 kapptemplate					install
+karbon						install
 kate						install
 kate-data					install
 katepart					install
@@ -728,6 +743,7 @@ kbugbuster					install
 kcachegrind					install
 kcalc						install
 kcharselect					install
+kchart						install
 kcolorchooser					install
 kde-baseapps					install
 kde-baseapps-bin				install
@@ -810,12 +826,14 @@ kdiamond					install
 kdm						install
 kdoctools					install
 kerneloops					install
+kexi						install
 keyboard-configuration				install
 keychain					install
 keyutils					install
 kfilereplace					install
 kfind						install
 kfloppy						install
+kformula					install
 kfourinline					install
 kgamma						install
 kgeography					install
@@ -860,6 +878,10 @@ knode						install
 knotes						install
 kobodeluxe					install
 kobodeluxe-data					install
+koffice						install
+koffice-data					install
+koffice-doc-html				install
+koffice-libs					install
 kolf						install
 kollision					install
 kolourpaint4					install
@@ -879,12 +901,16 @@ kopete						install
 korganizer					install
 kpartloader					install
 kpat						install
+kplato						install
 kppp						install
+kpresenter					install
 krb5-locales					install
 krdc						install
 kremotecontrol					install
 kreversi					install
 krfb						install
+krita						install
+krita-data					install
 krosspython					install
 kruler						install
 ksame						install
@@ -896,6 +922,7 @@ kshisen						install
 ksirk						install
 ksnapshot					install
 kspaceduel					install
+kspread						install
 ksquares					install
 kstars						install
 kstars-data					install
@@ -904,6 +931,7 @@ ksysguard					install
 ksysguardd					install
 ksystemlog					install
 kteatime					install
+kthesaurus					install
 ktimer						install
 ktimetracker					install
 ktouch						install
@@ -918,6 +946,8 @@ kuiviewer					install
 kuser						install
 kwalletmanager					install
 kweather					install
+kword						install
+kword-data					install
 kwordquiz					install
 kwrite						install
 lacheck						install
@@ -2186,6 +2216,7 @@ libportaudio2:i386				install
 libpostproc51					install
 libpostproc52:i386				install
 libpq5						install
+libpqxx-3.0					install
 libprison0:i386					install
 libproc-waitstat-perl				install
 libprocesscore4a				install
@@ -2447,6 +2478,9 @@ libsoup-gnome2.4-1				install
 libsoup-gnome2.4-1:i386				install
 libsoup2.4-1					install
 libsoup2.4-1:i386				install
+libsox-fmt-alsa					install
+libsox-fmt-base					install
+libsox1b					install
 libspandsp2					install
 libspectre1					install
 libspeechd2					install
@@ -2673,6 +2707,7 @@ libxau6						install
 libxau6:i386					install
 libxaw7						install
 libxaw7:i386					install
+libxbase2.0-0					install
 libxcb-atom1					install
 libxcb-aux0					install
 libxcb-composite0:i386				install
@@ -2741,10 +2776,13 @@ libxkbfile1:i386				install
 libxklavier16					install
 libxml-commons-external-java			install
 libxml-commons-resolver1.1-java			install
+libxml-dom-perl					install
 libxml-libxml-perl				install
 libxml-namespacesupport-perl			install
 libxml-parser-perl				install
 libxml-parser-ruby1.8				install
+libxml-perl					install
+libxml-regexp-perl				install
 libxml-rss-libxml-perl				install
 libxml-sax-base-perl				install
 libxml-sax-expat-perl				install
@@ -2820,10 +2858,12 @@ linux-headers-686-pae				install
 linux-headers-amd64				install
 linux-image-2.6-686				install
 linux-image-2.6-amd64				install
+linux-image-2.6.32-5-486			install
 linux-image-2.6.32-5-686			install
 linux-image-2.6.32-5-amd64			install
 linux-image-3.2.0-2-486				install
 linux-image-3.2.0-2-686-pae			install
+linux-image-486					install
 linux-image-686					install
 linux-image-686-pae				install
 linux-kbuild-2.6.32				install
@@ -2850,6 +2890,7 @@ login						install
 logrotate					install
 logtail						install
 lokalize					install
+lookup						install
 lp-solve					install
 lrzsz						install
 lsb-base					install
@@ -3081,7 +3122,9 @@ php5-cli					install
 php5-common					install
 pigz						install
 pinentry-curses					install
+pinentry-doc					install
 pinentry-gtk2					install
+pinentry-qt					install
 pinentry-qt4					install
 pipebench					install
 pkg-config					install
@@ -3531,6 +3574,7 @@ software-properties-gtk				install
 soprano-daemon					install
 sound-juicer					install
 sound-theme-freedesktop				install
+sox						install
 spamassassin					install
 spamc						install
 spectemu-common					install
@@ -3603,6 +3647,7 @@ tcptraceroute					install
 tcputils					install
 tct						install
 tdb-tools					install
+tedia2sql					install
 telepathy-gabble				install
 telepathy-logger				install
 telepathy-mission-control-5			install
@@ -3696,6 +3741,7 @@ tzdata						install
 tzdata-java					install
 ucf						install
 udev						install
+udhcpc						install
 udisks						install
 ufraw-batch					install
 umbrello					install
@@ -3705,6 +3751,7 @@ unixodbc					install
 unixodbc-bin					install
 uno-libs3					install
 unp						install
+unrar						install
 unzip						install
 update-inetd					install
 update-manager-core				install
