@@ -158,6 +158,7 @@ crda						install
 cron						install
 cron-apt					install
 cryptsetup					install
+css-mode					install
 cups						install
 cups-bsd					install
 cups-client					install
@@ -215,6 +216,7 @@ dia-libs					install
 dia-shapes					install
 dia2code					install
 dialog						install
+dict						install
 dictionaries-common				install
 diff						install
 diffstat					install
@@ -268,6 +270,8 @@ eject						install
 ekiga						install
 elserv						install
 emacs						install
+emacs-calfw					install
+emacs-goodies-el				install
 emacs23						install
 emacs23-bin-common				install
 emacs23-common					install
@@ -570,6 +574,7 @@ gnuchess-book					install
 gnugo						install
 gnupg						install
 gnupg-agent					install
+gnupg-curl					install
 gnupg-doc					install
 gnupg2						install
 gnustep-base-common				install
@@ -577,6 +582,7 @@ gnustep-base-runtime				install
 gnustep-common					install
 gocr						install
 gok						install
+golang-mode					install
 google-gadgets-common				install
 google-gadgets-gst				install
 google-gadgets-qt				install
@@ -647,6 +653,7 @@ hplip-doc					install
 hplip-gui					install
 htdig						install
 htdig-doc					install
+html-helper-mode				install
 html2text					install
 htop						install
 hubdns						install
@@ -693,6 +700,7 @@ java-common					install
 javascript-common				install
 jfsutils					install
 jovie						install
+js2-mode					install
 juk						install
 junit						install
 junit4						install
@@ -977,7 +985,10 @@ libapache2-mod-dnssd				install
 libapache2-mod-perl2				install
 libapache2-mod-php5				install
 libapache2-mod-python				install
+libapache2-mod-python-doc			install
+libapache2-mod-wsgi				install
 libapache2-reload-perl				install
+libapache2-svn					install
 libappconfig-perl				install
 libapr1						install
 libaprutil1					install
@@ -1007,6 +1018,7 @@ libatk-wrapper-java-jni				install
 libatk1.0-0					install
 libatk1.0-data					install
 libatkmm-1.6-1					install
+libatm1						install
 libatspi1.0-0					install
 libattica0					install
 libattr1					install
@@ -1051,7 +1063,9 @@ libbonobo2-common				install
 libbonoboui2-0					install
 libbonoboui2-common				install
 libboost-date-time1.42.0			install
+libboost-date-time1.49.0			install
 libboost-filesystem1.42.0			install
+libboost-filesystem1.49.0			install
 libboost-iostreams1.42.0			install
 libboost-iostreams1.46.1			install
 libboost-iostreams1.48.0			install
@@ -1062,6 +1076,7 @@ libboost-python1.42.0				install
 libboost-python1.49.0				install
 libboost-regex1.42.0				install
 libboost-system1.42.0				install
+libboost-system1.49.0				install
 libboost-thread1.42.0				install
 libboost-thread1.49.0				install
 libbrasero-media0				install
@@ -1166,6 +1181,7 @@ libcroco3					install
 libcrypt-passwdmd5-perl				install
 libcrypt-ssleay-perl				install
 libcrypt-twofish-perl				install
+libcrypto++9					install
 libcryptui0					install
 libcups2					install
 libcupscgi1					install
@@ -1198,6 +1214,7 @@ libdb4.8					install
 libdb5.1					install
 libdb5.1-java					install
 libdb5.1-java-gcj				install
+libdbd-mysql-perl				install
 libdbd-pg-perl					install
 libdbi-perl					install
 libdbus-1-3					install
@@ -1624,6 +1641,7 @@ libjpeg62					install
 libjpeg8					install
 libjs-jquery					install
 libjs-jquery-ui					install
+libjs-jquery-ui-docs				install
 libjs-mathjax					install
 libjs-mochikit					install
 libjs-prototype					install
@@ -1785,6 +1803,7 @@ liblzma2					install
 liblzma5					install
 liblzo2-2					install
 libm17n-0					install
+libmaa3						install
 libmad0						install
 libmagic1					install
 libmagick++3					install
@@ -1805,6 +1824,7 @@ libmath-bigint-gmp-perl				install
 libmath-bigint-perl				install
 libmath-round-perl				install
 libmatroska5					install
+libmcrypt4					install
 libmdbtools					install
 libmeanwhile1					install
 libmediastreamer0				install
@@ -2637,6 +2657,7 @@ mdadm						install
 mdbtools					install
 media-player-info				install
 members						install
+memcached					install
 memdump						install
 memtest86+					install
 menu						install
@@ -2682,7 +2703,11 @@ mutt						install
 mutter-common					install
 myrescue					install
 myspell-en-us					install
+mysql-client-5.5				install
 mysql-common					install
+mysql-server					install
+mysql-server-5.1				install
+mysql-server-5.5				install
 mysql-server-core-5.1				install
 mysql-server-core-5.5				install
 mythes-en-us					install
@@ -2821,6 +2846,7 @@ pdfedit						install
 pdftk						install
 perl						install
 perl-base					install
+perl-doc					install
 perl-modules					install
 perl-tk						install
 perlmagick					install
@@ -2833,6 +2859,13 @@ phonon-backend-vlc				install
 phonon-backend-xine				install
 php5-cli					install
 php5-common					install
+php5-gd						install
+php5-mcrypt					install
+php5-mysql					install
+php5-pgsql					install
+php5-suhosin					install
+phpmyadmin					install
+phppgadmin					install
 pigz						install
 pinentry-curses					install
 pinentry-doc					install
@@ -2978,6 +3011,8 @@ python-doc					install
 python-docutils					install
 python-egenix-mxdatetime			install
 python-egenix-mxdatetime-doc			install
+python-egenix-mxtexttools			install
+python-egenix-mxtexttools-doc			install
 python-egenix-mxtools				install
 python-egenix-mxtools-doc			install
 python-elixir					install
@@ -2998,6 +3033,7 @@ python-genshi-doc				install
 python-gi					install
 python-gi-cairo					install
 python-glade2					install
+python-gluon					install
 python-gmenu					install
 python-gnome2					install
 python-gnomeapplet				install
@@ -3014,6 +3050,7 @@ python-gtkspell					install
 python-httplib2					install
 python-hulahop					install
 python-imaging					install
+python-imaging-doc				install
 python-iniparse					install
 python-jinja2					install
 python-jinja2-doc				install
@@ -3035,6 +3072,7 @@ python-mako					install
 python-mako-doc					install
 python-markupsafe				install
 python-mechanize				install
+python-memcache					install
 python-migrate					install
 python-minimal					install
 python-mode					install
@@ -3054,6 +3092,7 @@ python-pastedeploy				install
 python-pastescript				install
 python-pexpect					install
 python-pgsql					install
+python-pip					install
 python-pkg-resources				install
 python-psycopg2					install
 python-psycopg2-doc				install
@@ -3062,6 +3101,7 @@ python-pyatspi					install
 python-pybabel					install
 python-pychart					install
 python-pychart-doc				install
+python-pycryptopp				install
 python-pycurl					install
 python-pydot					install
 python-pygame					install
@@ -3144,8 +3184,10 @@ python-useless-sqlgen				install
 python-utidylib					install
 python-vatnumber				install
 python-venusian					install
+python-virtualenv				install
 python-vobject					install
 python-vte					install
+python-web2py					install
 python-webdav					install
 python-weberror					install
 python-webhelpers				install
@@ -3203,6 +3245,7 @@ rdiff						install
 re2c						install
 readline-common					install
 realpath					install
+recode						install
 recoverdm					install
 reglookup					install
 reiserfsprogs					install
@@ -3307,6 +3350,7 @@ squidclient					install
 squidguard					install
 ssdeep						install
 ssh						install
+ssh-askpass					install
 ssl-cert					install
 stella						install
 step						install
@@ -3509,6 +3553,7 @@ virtualbox-ose-guest-utils			install
 virtualbox-ose-guest-x11			install
 virtualbox-ose-qt				install
 virtualbox-qt					install
+virtualenvwrapper				install
 virtuoso-minimal				install
 virtuoso-opensource-6.1-bin			install
 virtuoso-opensource-6.1-common			install
