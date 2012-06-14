@@ -1,18 +1,15 @@
-Name: squeeze
+Name: main
 Method: http://ftp.us.debian.org/debian
 Fallback: http://ftp.de.debian.org/debian
 VerifyRelease: 473041FA
 Architectures: amd64 i386 source
 Components: main contrib non-free
 UDebComponents: none
-FilterList: deinstall pkgs/pegatron pkgs/cypress pkgs/tkdev pkgs/builder pkgs/workstation pkgs/bard
+FilterList: deinstall pkgs/squeeze.pkgs pkgs/wheezy.pkgs
 
 
 
-
-
-
-Name: squeeze-di
+Name: di
 Method: http://debian.mirrors.tds.net/debian
 #Method: http://ftp.uk.debian.org/debian
 #Method: http://ftp.us.debian.org/debian 

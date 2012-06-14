@@ -8,6 +8,18 @@ Architectures: amd64 i386 source
 Components: main contrib non-free
 Description: Debian Stable
 Log: logfile
-Update: squeeze
+Update: main 
+SignWith: C4B08740
+
+Origin: Debian
+Label: Debian
+Suite: testing
+Codename: wheezy
+#Architectures: i386 amd64 source
+Architectures: amd64 i386 source
+Components: main contrib non-free
+Description: Debian x.y Testing distribution - Not Released
+Log: logfile
+Update: main 
 SignWith: C4B08740
 
