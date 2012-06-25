@@ -25,6 +25,8 @@ def make_pkg_line(package, action):
     # the output of dpkg --get-selections
     truetab = 6 - (len(package) / 8)
     tabs = '\t' * truetab
+    if not tabs:
+        tabs = '\t'
     line = '%s%s%s\n' % (package, tabs, action)
     return line
 
