@@ -1479,6 +1479,7 @@ libbsd-resource-perl				install
 libbsd0						install
 libbsf-java					install
 libbtf1.1.0					install
+libbtm-java					install
 libburn-dev					install
 libburn4					install
 libbusiness-isbn-data-perl			install
@@ -1603,6 +1604,7 @@ libcluttergesture-0.0.2-0			install
 libcluttergesture-dev				install
 libcman-dev					install
 libcman3					install
+libcobertura-java				install
 libcogl-common					install
 libcogl-pango0					install
 libcogl9					install
@@ -1626,6 +1628,7 @@ libcommons-discovery-java			install
 libcommons-el-java				install
 libcommons-httpclient-java			install
 libcommons-io-java				install
+libcommons-jxpath-java				install
 libcommons-lang-java				install
 libcommons-logging-java				install
 libcommons-modeler-java				install
@@ -1635,6 +1638,7 @@ libcommons-parent-java				install
 libcommons-pool-java				install
 libcommons-pool-java-doc			install
 libcommons-validator-java			install
+libcommons-vfs-java				install
 libcompfaceg1					install
 libcompfaceg1-dev				install
 libconcurrent-java				install
@@ -2540,14 +2544,17 @@ libjconv2					install
 libjdbm-java					install
 libjdepend-java					install
 libjdom1-java					install
+libjettison-java				install
 libjetty-java					install
 libjgroups-java					install
 libjgroups2.6-java				install
 libjim0debian2					install
 libjline-java					install
 libjmock-java					install
+libjmock2-java					install
 libjna-java					install
 libjna-posix-java				install
+libjoda-time-java				install
 libjpeg-progs					install
 libjpeg62					install
 libjpeg62-dev					install
@@ -2804,6 +2811,7 @@ libmatroska5					install
 libmaven-antrun-plugin-java			install
 libmaven-archiver-java				install
 libmaven-clean-plugin-java			install
+libmaven-cobertura-plugin-java			install
 libmaven-compiler-plugin-java			install
 libmaven-dependency-tree-java			install
 libmaven-doxia-tools-java			install
@@ -3103,6 +3111,7 @@ libnunit2.4-cil					install
 liboauth0					install
 libobjc2					install
 libobject-realize-later-perl			install
+libobjenesis-java				install
 libodbcinstq1c2					install
 libofa0						install
 libofa0-dev					install
