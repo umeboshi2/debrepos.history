@@ -6,6 +6,10 @@ import subprocess
 from useless.base.path import path
 
 from debrepos.base import Proc, SecureShellHandler
+from debrepos.base import get_filenames_with_dcmd
+from debrepos.base import parse_dsc_filename
+
+from debrepos.pbuilderrc import PbuilderConfigManager
 
 
 class BullProdder(SecureShellHandler):
@@ -36,8 +40,8 @@ class BullProdder(SecureShellHandler):
         self.current_package = None
 
         self.local_pbuilderrc_config_dir = 'pbuilderrc'
+        self.pbuilder_basedir = '/var/cache/pbuilder/buildbase'
         
-
     def _check_subprocess_test(self, *args):
         SecureShellHandler._check_subprocess(self, *args)
         if self.tailproc is not None:
@@ -61,8 +65,8 @@ class BullProdder(SecureShellHandler):
         return 'result/%s' % self.arch
 
     def basedir(self, pbuilderrc=None):
-        basedir = '/var/cache/pbuilder/%s/%s/base.cow'
-        basedir = basedir % (self.arch, self.dist)
+        basedir = '%s/%s/%s/base.cow'
+        basedir = basedir % (self.pbuilder_basedir, self.arch, self.dist)
         if pbuilderrc is not None:
             basedir = '%s.%s' % (basedir, pbuilderrc)
         return basedir
@@ -79,7 +83,7 @@ class BullProdder(SecureShellHandler):
         return os.path.join(incoming, 'pbuilderrc-%s' % pbuilderrc)
 
     def buildresult(self, pbuilderrc=None):
-        base = os.path.join('/var/cache/pbuilder',
+        base = os.path.join(self.pbuilder_basedir,
                              self.arch, self.dist)
         rpath = os.path.join(base, 'result')
         if pbuilderrc is not None:
@@ -129,9 +133,11 @@ class BullProdder(SecureShellHandler):
                 msg = "%s doesn't exist on %s."
                 msg = msg % (distdir, self.host)
                 raise RuntimeError , msg
-            cmd = prefix + ['cowbuilder', '--create',
-                            '--dist', self.dist,
-                            '--basepath', cowbase]
+            cmd = prefix + [
+                'ARCH=%s' % self.arch,
+                'cowbuilder', '--create',
+                '--dist', self.dist,
+                '--basepath', cowbase]
             cmd += self._update_cowbuild_cmd(pbuilderrc)
             logname = self.logname('create')
             logfile = file(logname, 'w')
@@ -160,6 +166,12 @@ class BullProdder(SecureShellHandler):
             print "Retrieving result with: %s" % ' '.join(cmd)
         subprocess.check_call(cmd)
 
+    def delete_result(self, pbuilderrc=None):
+        rpath = self.buildresult(pbuilderrc=pbuilderrc)
+        prefix = self.command_prefix(user='root')
+        cmd = prefix + ['rm', '-fr', rpath]
+        subprocess.check_call(cmd)
+        
     def make_prebuild_info(self, logfile, pbuilderrc):
         divider = '=' * 70 + '\n'
         if pbuilderrc is not None:
@@ -173,14 +185,20 @@ class BullProdder(SecureShellHandler):
             logfile.write(divider)
 
     def build(self, dscfile, pbuilderrc=None, wait=True):
+        # we only parse the dsc file for
+        # sanitation purposes.  The source
+        # and version variables aren't
+        # being used.
+        source, version = parse_dsc_filename(dscfile)
+        address = self.command_prefix(user='root')[1]
         incoming = '~/%s' % self.buildd_incoming
         self.makedirs(incoming)
         
         # copy files to buildd
         if self.verbose:
-            print "Copying files to %s" % self.host
+            print "Copying files to %s" % address
         cmd = ['dcmd', 'scp', dscfile,
-               '%s:~/%s' % (self.host, self.buildd_incoming)]
+               '%s:~/%s' % (address, self.buildd_incoming)]
         subprocess.check_call(cmd)
 
         # prepare variables and logs
@@ -280,7 +298,82 @@ class BullProdder(SecureShellHandler):
         self.send_file_contents(remote_filename, contents)
 
     
+class MainBuilder(object):
+    def __init__(self, user=None):
+        self.bullprodder = BullProdder(user=user)
+        self.bullprodder.verbose = True
+        self.manager = PbuilderConfigManager()
+        self.bullprodder.backup_system_pbuilderrc()
+        
+    def set_dist(self, dist):
+        self.manager.dist = dist
+        self.bullprodder.dist = dist
+
+    def _changes(self, dscfile, arch):
+        prefix = dscfile.split('.dsc')[0]
+        return '%s_%s.changes' % (prefix, arch)
     
+    def stage_resulting_changes(self, dscfile, arch):
+        source, version = parse_dsc_filename(dscfile)
+        basename = self._changes(dscfile, arch)
+        resultdir = 'result/%s' % arch
+        changes = os.path.join(resultdir, basename)
+        if not os.path.isfile(changes):
+            raise RuntimeError, "%s doesn't exist."
+        return self.stage_changes(source, changes, arch)
+    
+    
+    def stage_changes(self, source, changes, arch, remove=True):
+        if not os.path.isdir(source):
+            os.mkdir(source)
+        files = get_filenames_with_dcmd(changes)
+        arch_only_present = False
+        for filename in files:
+            if filename.endswith('_%s.deb' % arch):
+                arch_only_present = True
+            basename = os.path.basename(filename)
+            newname = os.path.join(source, basename)
+            move = True
+            if os.path.isfile(newname):
+                move = False
+                if remove:
+                    print "WARNING: Removing existing file %s" % newname
+                    os.remove(newname)
+                    move = True
+            if move:
+                os.rename(filename, newname)
+        return arch_only_present
+
+        
+    def _build(self, dscfile, opts, arch):
+        self.manager.debbuild_opts = opts
+        contents = self.manager.substitute()
+        self.bullprodder.send_system_pbuilderrc(contents)
+        self.bullprodder.build(dscfile)
+        self.bullprodder.retrieve_result()
+        # When we stage the resulting changes, we
+        # take the time to notice if there are any
+        # arch dependent debs that have been built.
+        # If there are no such debs, we will not have
+        # to run a build for the other archs.
+        arch_only_present = self.stage_resulting_changes(dscfile, arch)
+        self.bullprodder.delete_result()
+        return arch_only_present
+    
+
+    def _change_arch(self, arch):
+        self.bullprodder.arch = arch
+        self.bullprodder.create_base()
+        self.bullprodder.update_base()
+        
+    def build(self, dscfile):
+        arch = 'amd64'
+        self._change_arch(arch)
+        arch_only_present = self._build(dscfile, '-b', arch)
+        if arch_only_present:
+            arch = 'i386'
+            self._change_arch(arch)
+            self._build(dscfile, '-B', arch)
         
 if __name__ == '__main__':
     bp = BullProdder()

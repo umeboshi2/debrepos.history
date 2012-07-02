@@ -35,8 +35,8 @@ class SecureShellHandler(object):
         return ['ssh', address]
 
     # This method is for small files only.
-    def get_file_contents(self, filename):
-        cmd = self.command_prefix()
+    def get_file_contents(self, filename, user=None):
+        cmd = self.command_prefix(user=user)
         cmd += ['cat', filename]
         proc = Proc(cmd, stdout=subprocess.PIPE)
         contents = proc.stdout.read()

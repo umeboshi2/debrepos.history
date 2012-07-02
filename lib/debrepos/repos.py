@@ -37,19 +37,32 @@ class RepRepRo(object):
         options = ['--basedir', self.basedir]
         options += ['-VV', '--noskipold']
         return options
-    
+
+    def run_command(self, command, logfile=None):
+        if logfile is None:
+            logfile = self.logfile
+        if self.proc is None:
+            self.proc = subprocess.Popen(command, stdout=logfile,
+                                         stderr=logfile)
+        else:
+            raise ProcessRunning , "There is already a process running"
+        
     def update(self, codenames=[]):
-        cmd = ['reprepro', '-VV', '--noskipold', 'update']
         cmd = ['reprepro'] + self._set_options()
         cmd += ['update']
         cmd += codenames
-        if self.proc is None:
-            self.proc = subprocess.Popen(cmd, stdout=self.logfile,
-                                         stderr=self.logfile)
-        else:
-            raise ProcessRunning , "There is already a process running"
+        self.run_command(cmd)
 
-
+    def include(self, codename, changes):
+        cmd = ['reprepro'] + self._set_options()
+        cmd += ['--ignore=wrongdistribution']
+        cmd += ['include', codename, changes]
+        self.run_command(cmd)
+        retcode = self.proc.wait()
+        if retcode:
+            raise RuntimeError , "bad things happening"
+        self.clean_proc()
+        
 
 
 if __name__ == '__main__':
