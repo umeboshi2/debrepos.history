@@ -4,6 +4,7 @@ import subprocess
 from debrepos.repos import RepRepRo
 from debrepos.build import MainBuilder
 from debrepos.base import parse_dsc_filename
+from debrepos.base import get_filenames_with_dcmd
 
 DEBIAN_BASEDIR = '/freespace/debrepos/debian'
 PAELLA_BASEDIR = '/freespace/debrepos/paella'
@@ -19,6 +20,21 @@ class MainManager(object):
     def staging_dir(self, dscfile):
         source, version = parse_dsc_filename(dscfile)
         return source
+
+    def get_dscfile_from_changes(self, changes):
+        dscfile = ''
+        filenames = get_filenames_with_dcmd(changes)
+        for filename in filenames:
+            if filename.endswith('.dsc'):
+                if not dscfile:
+                    dscfile = os.path.basename(filename)
+                else:
+                    print "Already a dscfile", dscfile
+                    print "filename", filename
+                    raise RuntimeError, "too many .dsc's"
+        if not dscfile:
+            raise RuntimeError, "No .dsc found."
+        return dscfile
     
     def build_source_package(self, dscfile):
         source, version = parse_dsc_filename(dscfile)
@@ -46,9 +62,9 @@ class MainManager(object):
         self.build_binary_packages(basename)
         os.chdir(here)
         
-    def install_to_repos(self, dist, dscfile):
+    def install_to_repos(self, dist, changes):
+        dscfile = self.get_dscfile_from_changes(changes)
         source, version = parse_dsc_filename(dscfile)
-        changes = '%s_%s_source.changes' % (source, version)
         if os.path.isfile(changes):
             self.paella_repos.include(dist, changes)
         self.build_binary_packages(dscfile)
