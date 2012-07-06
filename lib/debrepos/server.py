@@ -24,7 +24,7 @@ class PartialMirrorManager(object):
         basename = '%s.pkgs' % dist
         directory = self.baseparent / 'debian/conf/pkgs'
         filename = directory / basename
-        return filename
+        return str(filename)
 
     def get_selections(self, dist):
         filename = self.main_list_filename(dist)
