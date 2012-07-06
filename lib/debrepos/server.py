@@ -44,11 +44,11 @@ if __name__ == '__main__':
     import sys
     if sys.argv[1] == 'client':
         import xmlrpclib
-        remote = xmlrpclib.Server('http://localhost:8000')
+        remote = xmlrpclib.Server('http://cypress:8000')
         r = remote
     else:
         srv = PartialMirrorManager()
-        server = make_server('localhost', 8000, srv)
+        server = make_server('0.0.0.0', 8000, srv)
         server.serve_forever()
         
 
