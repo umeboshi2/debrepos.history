@@ -11,10 +11,14 @@ class RepRepRo(object):
     def __init__(self, basedir=None):
         if basedir is None:
             basedir = path.getcwd()
+        self.set_basedir(basedir)
+        self.clean_proc()
+
+
+    def set_basedir(self, basedir):
         self.basedir = path(basedir)
         self.logfile_name = self.basedir / 'logs/debrepos.log'
         self.logfile = None
-        self.clean_proc()
         self.open_logfile()
         
     def check_proc(self):

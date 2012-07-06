@@ -53,7 +53,7 @@ class PartialMirrorManager(object):
         else:
             msg = "%s not a valid repository" % repos
             raise RuntimeError , msg
-        self.repos.basedir = basedir
+        self.repos.set_basedir(basedir)
         ready = False
         check = self.repos.check_proc()
         if check and check == 'empty':
