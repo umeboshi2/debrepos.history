@@ -11,9 +11,9 @@ def make_pkg_line(package, action):
     return line
 
 
-def selections_to_dictionary(filename, install=False):
+def selections_to_dictionary(fileobj, install=False):
     data = dict()
-    for line in file(filename):
+    for line in fileobj:
         line = line.strip()
         package, action = [i.strip() for i in line.split()]
         #print '%s: %s' % (package, action)
@@ -43,7 +43,7 @@ MASTERLISTS = dict(squeeze='squeeze.pkgs',
 
 def get_master_list(dist):
     filename = MASTERLISTS[dist]
-    return file_to_dictionary(filename)
+    return file_to_dictionary(file(filename))
 
 def make_master_file(dist, data):
     master_filename = MASTERLISTS[dist]
@@ -66,7 +66,7 @@ def update_master_list(dist, filenames):
     master_data = get_master_list(opts.dist)
     for filename in filenames:
         print "updating %s with %s" % (master_filename, filename)
-        data = file_to_dictionary(filename)
+        data = file_to_dictionary(file(filename))
         master_data.update(data)
     print "Updating %s with all gathered data" % master_filename
     make_master_file(dist, master_data)
