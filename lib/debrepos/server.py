@@ -43,7 +43,8 @@ class PartialMirrorManager(object):
             line = make_pkg_line(package, action)
             mainlist.write(line)
         mainlist.close()
-        
+        return True
+    
     def update_repos(self, repos):
         if repos == 'debian':
             basedir = self.baseparent / 'debian'
@@ -63,7 +64,7 @@ class PartialMirrorManager(object):
         if not ready:
             raise RuntimeError , "repos process not ready"
         self.repos.update()
-        
+        return True
     
 def make_server(host, port, instance):
     server = SimpleXMLRPCServer.SimpleXMLRPCServer((host, port))
