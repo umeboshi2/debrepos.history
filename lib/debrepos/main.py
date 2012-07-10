@@ -5,16 +5,18 @@ from debrepos.repos import RepRepRo
 from debrepos.build import MainBuilder
 from debrepos.base import parse_dsc_filename
 from debrepos.base import get_filenames_with_dcmd
+from debrepos.config import config
 
-DEBIAN_BASEDIR = '/freespace/debrepos/debian'
-PAELLA_BASEDIR = '/freespace/debrepos/paella'
+DEBIAN_BASEDIR = config.get('repos_debian', 'basedir')
+LOCAL_BASEDIR = config.get('repos_local', 'basedir')
+
 
 
 class MainManager(object):
     def __init__(self):
         self.builder = MainBuilder(user='root')
         self.debian_repos = RepRepRo(basedir=DEBIAN_BASEDIR)
-        self.paella_repos = RepRepRo(basedir=PAELLA_BASEDIR)
+        self.local_repos = RepRepRo(basedir=LOCAL_BASEDIR)
         self.srcbuild_opts = ['-S', '-sa', '-us', '-uc']
 
     def staging_dir(self, dscfile):
@@ -66,13 +68,13 @@ class MainManager(object):
         dscfile = self.get_dscfile_from_changes(changes)
         source, version = parse_dsc_filename(dscfile)
         if os.path.isfile(changes):
-            self.paella_repos.include(dist, changes)
+            self.local_repos.include(dist, changes)
         self.build_binary_packages(dscfile)
         here = os.getcwd()
         os.chdir(source)
         changes_files = [f for f in os.listdir('.') if f.endswith('.changes')]
         for changes in changes_files:
-            self.paella_repos.include(dist, changes)
+            self.local_repos.include(dist, changes)
             
 if __name__ == '__main__':
     m = MainManager()

@@ -2,13 +2,15 @@ import SimpleXMLRPCServer
 
 from useless.base.path import path
 
+from debrepos.config import config
+
 from debrepos.filterlist import selections_to_dictionary
 from debrepos.filterlist import make_pkg_line
 from debrepos.repos import RepRepRo
 
 class PartialMirrorManager(object):
     def __init__(self):
-        self.baseparent = path('/freespace/debrepos')
+        self.baseparent = path(config.get('main', 'homedir'))
         self.repos = RepRepRo()
         
     def _main_list_filename(self, dist):
@@ -47,9 +49,9 @@ class PartialMirrorManager(object):
     
     def update_repos(self, repos):
         if repos == 'debian':
-            basedir = self.baseparent / 'debian'
+            basedir = path(config.get('repos_debian', 'basedir'))
         elif repos == 'security':
-            basedir = self.baseparent / 'security'
+            basedir = path(config.get('repos_security', 'basedir'))
         else:
             msg = "%s not a valid repository" % repos
             raise RuntimeError , msg
