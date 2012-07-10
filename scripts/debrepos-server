@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+import os, sys
+
+import daemon
+import lockfile
+
+from debrepos.config import config
+from debrepos.server import PartialMirrorManager
+from debrepos.server import make_server
+
+def main(*args):
+    service_object = PartialMirrorManager()
+    address = config.get('server', 'address')
+    port = config.getint('server', 'port')
+    server = make_server(address, port, service_object)
+    server.serve_forever()
+
+
+USE_DAEMON = False
+if USE_DAEMON:
+    working_directory = config.get('main', 'homedir')
+    pidfile = lockfile.FileLock(config.get('server', 'pidfile'))
+    umask = 0o002
+    
+    context = daemon.DaemonContext(working_directory=working_directory,
+                                   umask=umask,
+                                   pidfile=pidfile
+                                   )
+    
+
+if __name__ == '__main__':
+    if USE_DAEMON:
+        print pidfile
+        with context:
+            main(*sys.argv)
+    else:
+        main(*sys.argv)
+        
+
+    

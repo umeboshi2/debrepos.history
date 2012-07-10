@@ -1,4 +1,4 @@
-import SimpleXMLRPCServer
+from SimpleXMLRPCServer import SimpleXMLRPCServer
 
 from useless.base.path import path
 
@@ -28,7 +28,8 @@ class PartialMirrorManager(object):
         if not filename.isfile():
             return {}
         else:
-            return selections_to_dictionary(filename, install=True)
+            fileobj = file(filename)
+            return selections_to_dictionary(fileobj, install=True)
         
 
     def update_list(self, dist, data):
@@ -69,7 +70,10 @@ class PartialMirrorManager(object):
         return True
     
 def make_server(host, port, instance):
-    server = SimpleXMLRPCServer.SimpleXMLRPCServer((host, port))
+    #print "In make_server host: %s" % host
+    address = '%s:%s' % (host, port)
+    print "Listening on %s" % address
+    server = SimpleXMLRPCServer((host, port))
     server.register_instance(instance)
     return server
 

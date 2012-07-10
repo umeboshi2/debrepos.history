@@ -9,13 +9,16 @@ default_config = """
 
 [DEFAULT]
 homedir:    /freespace/debrepos
+server_default_port:    8000
 
 [main]
 
 
 [server]
 address:    0.0.0.0
-port:    8000
+port:    %(server_default_port)s
+#pidfile:    /var/run/debrepos.pid
+pidfile:    /tmp/debrepos.pid
 
 [somesection]
 option:    value
@@ -28,6 +31,10 @@ basedir:    %(homedir)s/security
 
 [repos_local]
 basedir:    %(homedir)s/paella
+
+[client]
+server:    cypress
+port:    %(server_default_port)s
 
 
 """ 
