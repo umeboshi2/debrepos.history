@@ -2,6 +2,8 @@ import os
 import time
 import random
 import urllib2
+import StringIO
+import subprocess
 
 class FileExistsError(Exception):
     pass
@@ -62,3 +64,71 @@ def download_uri(fileobj, filename, length, overwrite=False):
     if os.path.getsize(filename) != length:
         raise BadDownloadError , "There was a problem downloading this url"
     
+def poll_process_for_complete_output(cmd):
+    output = StringIO.StringIO()
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    while True:
+        nextline = proc.stdout.readline()
+        if nextline == '' and proc.poll() is not None:
+            break
+        output.write(nextline)
+        output.flush()
+    if proc.returncode:
+        msg = "There was a problem with command: %s" % cmd
+        raise RuntimeError, msg
+    output.seek(0)
+    return output
+
+
+
+##################################
+### hardlink dupes             ###
+##################################
+
+def find_dupes(args):
+    fdupes = '/usr/bin/fdupes'
+    dupelist = ''
+    if len(args) == 1:
+        arg = path(args[0])
+        if arg.isfile():
+            dupelist = file(arg).read()
+
+    if not dupelist:
+        cmd = [fdupes, '-r'] + args
+        #print cmd
+        output = poll_process_for_complete_output(cmd)
+        return output.read()
+
+def parse_dupelist(dupelist):
+    dupes = []
+    index = 0
+    for line in dupelist.splitlines():
+        if len(dupes) == index:
+            dupes.append([])
+        if line:
+            dupes[index].append(line)
+        else:
+            index += 1
+    return dupes
+
+def chmod(directory, permarg, recursive=True):
+    cmd = ['chmod']
+    if recursive:
+        cmd += ['-R']
+    cmd += [permarg, directory]
+    retval = subprocess.call(cmd)
+    if retval:
+        shcmd = ' '.join(cmd)
+        raise RuntimeError , "%s returned %d" % (shcmd, retval)
+
+
+def hardlink_dupes(directories):
+    dupelist = find_dupes(directories)
+    parsed = parse_dupelist(dupelist)
+    for dupeset in parsed:
+        orig = dupeset[0]
+        dupes = dupeset[1:]
+        for dupe in dupes:
+            os.remove(dupe)
+            os.link(orig, dupe)
+        

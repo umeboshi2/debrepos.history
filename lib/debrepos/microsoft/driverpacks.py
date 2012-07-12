@@ -34,6 +34,7 @@ class DriverPack(object):
         try:
             return handle_link(url)
         except HTTPError:
+            print 'HTTPError'
             return dict()
         
     def get_torrent(self):
@@ -62,6 +63,11 @@ def get_driverpacks(parser):
 def get_torrents(driverpacks):
     for dp in driverpacks:
         dp.get_torrent()
+
+def parse_rss_feed():
+    return feedparser.parse(DRIVERPACKS_LATEST_FEED)
+
+
         
 
 if __name__ == '__main__':

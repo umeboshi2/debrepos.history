@@ -57,17 +57,24 @@ class PartialMirrorManager(object):
             msg = "%s not a valid repository" % repos
             raise RuntimeError , msg
         self.repos.set_basedir(basedir)
-        ready = False
+        ready = self.is_process_ready()
+        if not ready:
+            raise RuntimeError , "repos process not ready"
+        self.repos.update()
+        return True
+
+    def poll_process(self):
+        return self.repos.check_proc()
+
+    def is_process_ready(self):
         check = self.repos.check_proc()
+        ready = False
         if check and check == 'empty':
             ready = True
         elif check == 0:
             self.repos.clean_proc()
             ready = True
-        if not ready:
-            raise RuntimeError , "repos process not ready"
-        self.repos.update()
-        return True
+        return ready
     
 def make_server(host, port, instance):
     #print "In make_server host: %s" % host

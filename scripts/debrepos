@@ -1,9 +1,24 @@
 #!/usr/bin/env python
 import os, sys
 import xmlrpclib
+import subprocess
+from optparse import OptionParser
+import time
 
 from debrepos.config import config
+from debrepos.filterlist import selections_to_dictionary
+from debrepos.util import poll_process_for_complete_output
 
+
+
+def get_dpkg_selections():
+    cmd = ['dpkg', '--get-selections']
+    outfile = poll_process_for_complete_output(cmd)
+    return selections_to_dictionary(outfile, install=True)
+
+def send_package_selections_to_repos(remote, dist='squeeze'):
+    packages = get_dpkg_selections()
+    return remote.update_list(dist, packages)
 
 def make_server_connection():
     server = config.get('client', 'server')
@@ -11,18 +26,55 @@ def make_server_connection():
     url = 'http://%s:%d' % (server, port)
     return xmlrpclib.Server(url)
 
-remote = make_server_connection()
 
-def main(*args):
-    pass
+def wait_until_ready(remote, sleep=10, attempts=10):
+    ready = remote.is_process_ready()
+    while not ready and attempts:
+        time.sleep(sleep)
+        attempts -= 1
+        ready = remote.is_process_ready()
+    return ready
 
+def update_repos(remote, repos):
+    ready = wait_until_ready(remote)
+    if not ready:
+        raise RuntimeError, 'remote repos process not ready.'
+    remote.update_repos(repos)
     
 
 
-                                   )
+
+
+
+def main(opts, args):
+    if not args:
+        print "A command is required"
+        raise RuntimeError , "No command supplied."
+    command = args[0]
+    print "Command is", command
+    commands = ['updatelist', 'updaterepos']
+    if command not in commands:
+        raise RuntimeError, "Unknown command: %s" % command
+    remote = make_server_connection()
+    if command == 'updatelist':
+        send_package_selections_to_repos(remote, opts.dist)
+    elif command == 'updaterepos':
+        for repos in ['debian', 'security']:
+            update_repos(remote, repos)
+            
+        
+
+
+
     
+
+parser = OptionParser()
+parser.add_option('-d', '--dist', action='store', dest='dist',
+                  default='squeeze')
+
+opts, args = parser.parse_args(sys.argv[1:])
+
 
 if __name__ == '__main__':
-    main(sys.argv)
-    r = remote
-    
+    main(opts, args)
+    #send_package_selections_to_repos(r)
