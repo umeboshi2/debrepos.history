@@ -35,7 +35,7 @@ class clean(_clean):
 
 data_files = []
 
-PACKAGES = ['common', 'server', 'client']
+PACKAGES = ['common', 'server', 'client', 'microsoft']
 package = None
 
 if sys.argv[1] in PACKAGES:
@@ -62,8 +62,16 @@ PACKS = {
 
 if package == 'common':
     packages = ['debrepos']
+elif package == 'microsoft':
+    packages = ['debrepos/microsoft']
 else:
     packages = []
+
+scripts = []
+if package == 'client':
+    scripts = ['scripts/debrepos']
+elif package == 'server':
+    scripts = ['scripts/debrepos-server']
     
 _myfindcmdforpackages = 'find src -type d | grep -v svn | cut -f2- -d/'
 url = 'http://paella.berlios.de'
@@ -74,14 +82,24 @@ description = 'paella configuration/installation management system',
 
 
 
-setup(name='debrepos-'+package,
-      version=version,
-      description=description,
-      author=author,
-      author_email=author_email,
-      url=url,
-      data_files=data_files,
-      cmdclass=dict(clean=clean),
-      package_dir={'':'lib'},
-      packages=packages
-      )
+kw = dict(name='debrepos-'+package,
+          version=version,
+          description=description,
+          author=author,
+          author_email=author_email,
+          url=url,
+          data_files=data_files,
+          cmdclass=dict(clean=clean),
+          package_dir={'':'lib'},
+          packages=packages
+          )
+
+if scripts:
+    kw['scripts'] = scripts
+
+print "KW:"
+for k,v in kw.items():
+    print '%s:  %s' % (k,v)
+print "------KW"
+    
+setup(**kw)

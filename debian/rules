@@ -11,15 +11,20 @@ install/debrepos-common::
 	python setup.py common install --prefix=$(prefix)
 	rm -r build/
 
+install/debrepos-microsoft::
+	echo "Building debrepos-microsoft"
+	python setup.py microsoft install --prefix=$(prefix)
+	rm -r build/
+
 install/debrepos-server::
 	echo "Building debrepos-server"
 	python setup.py server install --prefix=$(prefix)
-	#rm -r build/
+	rm -r build/
 
 install/debrepos-client::
 	echo "Building debrepos-client"
 	python setup.py client install --prefix=$(prefix)
-	#rm -r build/
+	rm -r build/
 
 
 clean::

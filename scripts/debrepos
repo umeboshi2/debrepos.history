@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+import os, sys
+import xmlrpclib
+
+from debrepos.config import config
+
+
+def make_server_connection():
+    server = config.get('client', 'server')
+    port = config.getint('client', 'port')
+    url = 'http://%s:%d' % (server, port)
+    return xmlrpclib.Server(url)
+
+remote = make_server_connection()
+
+def main(*args):
+    pass
+
+    
+
+
+                                   )
+    
+
+if __name__ == '__main__':
+    main(sys.argv)
+    r = remote
+    

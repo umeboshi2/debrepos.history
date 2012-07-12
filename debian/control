@@ -14,9 +14,15 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, python-useless-base
 Description: common code for debrepos packages
  common code for debrepos packages
 
+Package: debrepos-microsoft
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, debrepos-common, fuseiso, python-feedparser, python-libtorrent
+Description: common code to manage microsoft os stuff
+ common code to manage microsoft os stuff
+
 Package: debrepos-server
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, debrepos-common, python-daemon
+Depends: ${shlibs:Depends}, ${misc:Depends}, debrepos-common, python-daemon, fuseiso, python-feedparser, python-libtorrent
 Description: the server that manages the debian repository
  the server that manages the debian repository
 
