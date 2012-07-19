@@ -319,7 +319,7 @@ class MainBuilder(object):
         resultdir = 'result/%s' % arch
         changes = os.path.join(resultdir, basename)
         if not os.path.isfile(changes):
-            raise RuntimeError, "%s doesn't exist."
+            raise RuntimeError, "%s doesn't exist." % changes
         return self.stage_changes(source, changes, arch)
     
     
