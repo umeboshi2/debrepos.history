@@ -12,8 +12,6 @@ from debrepos.util import handle_link
 DRIVERPACKS_LATEST_FEED = 'http://driverpacks.net/driverpacks/latest/feed'
 
 
-
-
 class DriverPack(object):
     def __init__(self, title, link):
         self.title = title
@@ -27,10 +25,25 @@ class DriverPack(object):
             setattr(self, attr, basename)
 
     def download_link(self):
-        return os.path.join(self.link, 'download/torrent')
+        base = 'http://driverpacks.net/driverpacks/windows'
+        if self.packname == 'runtimes-ati':
+            link = os.path.join(base, self.winver,
+                                self.arch, 'runtimes-for-ati',
+                                self.version, 'download',
+                                'torrent')
+            return link
+        elif self.packname == 'touchpad-mouse':
+            link = os.path.join(base, self.winver, self.arch,
+                                'touchpad_mouse', self.version,
+                                'download', 'torrent')
+            return link
+        else:
+            return os.path.join(self.link, 'download/torrent')
 
     def get_torrent_info(self):
+        #print "get_torrent_info for", self.title
         url = self.download_link()
+        #print "Using %s as download url" % url
         try:
             return handle_link(url)
         except HTTPError:
