@@ -1,6 +1,6 @@
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 
-from useless.base.path import path
+from debrepos.path import path
 
 from debrepos.config import config
 

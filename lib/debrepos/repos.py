@@ -1,7 +1,7 @@
 import os, sys
 import subprocess
 
-from useless.base.path import path
+from debrepos.path import path
 
 class ProcessRunning(Exception):
     pass

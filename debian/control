@@ -10,7 +10,7 @@ Homepage: http://paella.berlios.de/
 
 Package: debrepos-common
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, python-useless-base, fdupes
+Depends: ${shlibs:Depends}, ${misc:Depends}, fdupes
 Description: common code for debrepos packages
  common code for debrepos packages
 

@@ -5,7 +5,7 @@ from httplib import IncompleteRead
 
 import feedparser
 
-from useless.base.path import path
+from debrepos.path import path
 
 from debrepos.util import handle_link
 

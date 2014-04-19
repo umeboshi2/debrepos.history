@@ -3,7 +3,7 @@ import time
 import signal
 import subprocess
 
-from useless.base.path import path
+from debrepos.path import path
 
 from debrepos.base import Proc, SecureShellHandler
 from debrepos.base import get_filenames_with_dcmd

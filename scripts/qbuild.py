@@ -2,7 +2,7 @@ import os, sys
 import subprocess
 
 import apt
-from useless.base.path import path
+from debrepos.path import path
 
 
 class ChangesNotFoundError(Exception):

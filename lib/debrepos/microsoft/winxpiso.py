@@ -2,7 +2,7 @@ import os
 import subprocess
 import tempfile
 
-from useless.base.path import path
+from debrepos.path import path
 
 from debrepos.util import hardlink_dupes, chmod
 
